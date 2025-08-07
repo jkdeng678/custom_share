@@ -1,6 +1,7 @@
 # custom_share
 
-A Flutter plugin for sharing text and files via native share dialogs, supporting Android , iOS, macOS, Windows, Linux, and (No Web support).
+A Flutter plugin for sharing text and files via **NATIVE SHARE DIALOGS**, supporting Android , iOS, macOS, Windows, Linux, and (No Web support).
+
 # Usage
 
 ```dart
@@ -19,6 +20,20 @@ final fileResult = await CustomShare().shareFiles(
 );
 print('File share result: $fileResult');
 ```
+# Screenshot
+
+## IOS
+![IOS1](example/assets/IOS1.png "IOS1")
+![IOS2](example/assets/IOS2.png "IOS2")
+![IOS3](example/assets/IOS3.png "IOS3")
+## Android
+![Android1](example/assets/Android1.png "Android1")
+![Android2](example/assets/Android2.png "Android2")
+![Android3](example/assets/Android3.png "Android3")
+## macOS
+![macOS1](example/assets/macOS1.png "macOS1")
+![macOS2](example/assets/macOS2.png "macOS2")
+![macOS3](example/assets/macOS3.png "macOS3")
 
 # Platform Support
 
@@ -32,9 +47,12 @@ Windows: Uses Data Transfer API.
 
 Linux: Uses xdg-open.
 
-Web: Uses Web Share API (text only; file sharing not supported).
+NOT Support Web: Uses Web Share API (text only; file sharing not supported).
 
 # Example
+
 See the example directory for a sample app demonstrating text and file sharing.
+
 # License
+
 BSD-3-Clause
