@@ -1,6 +1,6 @@
 # custom_share
 
-A Flutter plugin for sharing text and files via **NATIVE SHARE DIALOGS**, supporting Android , iOS, macOS, Windows, Linux, and (No Web support).
+A Flutter plugin for sharing text and files via **NATIVE SHARE UI**, supporting Android , iOS, macOS, Windows, Linux.
 
 # Usage
 
