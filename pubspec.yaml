@@ -1,6 +1,6 @@
 name: custom_share
 description: A Flutter plugin for sharing text and files via **NATIVE SHARE UI**, supporting Android , iOS, macOS, Windows, Linux.
-version: 0.0.1
+version: 1.0.0
 homepage: https://github.com/jkdeng678/custom_share
 repository: https://github.com/jkdeng678/custom_share
 issue_tracker: https://github.com/jkdeng678/custom_share/issues
