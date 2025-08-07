@@ -11,7 +11,7 @@ A Flutter plugin for sharing text and files via **NATIVE SHARE UI**, supporting 
 Add the following to your `pubspec.yaml`:
 ```yaml
 dependencies:
-  custom_share: ^1.0.0
+  custom_share: ^0.0.1
 ```
 
 Run:
