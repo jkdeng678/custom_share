@@ -1,9 +1,25 @@
-# custom_share
+# Custom Share
 
 A Flutter plugin for sharing text and files via **NATIVE SHARE UI**, supporting Android , iOS, macOS, Windows, Linux.
 
-# Usage
+## Features
+- Share text, URLs, and files to popular social media apps.
+- Use NATIVE SHARE UI.
+- Easy-to-use API for developers.
 
+## Installation
+Add the following to your `pubspec.yaml`:
+```yaml
+dependencies:
+  custom_share: ^1.0.0
+```
+
+Run:
+```bash
+flutter pub get
+```
+
+## Usage
 ```dart
 import 'package:custom_share/custom_share.dart';
 
@@ -20,39 +36,19 @@ final fileResult = await CustomShare().shareFiles(
 );
 print('File share result: $fileResult');
 ```
-# Screenshot
 
-## IOS
-![IOS1](example/assets/IOS1.png "IOS1")
-![IOS2](example/assets/IOS2.png "IOS2")
-![IOS3](example/assets/IOS3.png "IOS3")
-## Android
-![Android1](example/assets/Android1.png "Android1")
-![Android2](example/assets/Android2.png "Android2")
-![Android3](example/assets/Android3.png "Android3")
-## macOS
-![macOS1](example/assets/macOS1.png "macOS1")
-![macOS2](example/assets/macOS2.png "macOS2")
-![macOS3](example/assets/macOS3.png "macOS3")
+## Screenshots
+Below are some screenshots of the `custom_share` plugin in action:
 
-# Platform Support
+![Android Screenshot](https://github.com/jkdeng678/custom_share/blob/main/screenshots/Android.png?raw=true)
+![iOS Screenshot](https://github.com/jkdeng678/custom_share/blob/main/screenshots/IOS.png?raw=true)
+![macOS Screenshot](https://github.com/jkdeng678/custom_share/blob/main/screenshots/macOS.png?raw=true)
 
-Android: Uses ACTION_SEND and ACTION_SEND_MULTIPLE.
+## Example
+See the `example/` folder for a sample Flutter app demonstrating the usage of this plugin.
 
-iOS: Uses UIActivityViewController.
+## Issues
+Please file any issues or feature requests on the [GitHub issue tracker](https://github.com/jkdeng678/custom_share/issues).
 
-macOS: Uses NSSharingServicePicker.
-
-Windows: Uses Data Transfer API.
-
-Linux: Uses xdg-open.
-
-NOT Support Web: Uses Web Share API (text only; file sharing not supported).
-
-# Example
-
-See the example directory for a sample app demonstrating text and file sharing.
-
-# License
-
+## License
 BSD-3-Clause
