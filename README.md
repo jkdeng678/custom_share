@@ -11,7 +11,7 @@ A Flutter plugin for sharing text and files via **NATIVE SHARE UI**, supporting 
 Add the following to your `pubspec.yaml`:
 ```yaml
 dependencies:
-  custom_share: ^0.0.1
+  custom_share: ^1.0.6
 ```
 
 Run:
@@ -41,8 +41,8 @@ print('File share result: $fileResult');
 Below are some screenshots of the `custom_share` plugin in action:
 
 ![Android Screenshot](https://github.com/jkdeng678/custom_share/blob/main/screenshots/Android.png?raw=true)
-![iOS Screenshot](https://github.com/jkdeng678/custom_share/blob/main/screenshots/IOS.png?raw=true)
 ![macOS Screenshot](https://github.com/jkdeng678/custom_share/blob/main/screenshots/macOS.png?raw=true)
+![iOS Screenshot](https://github.com/jkdeng678/custom_share/blob/main/screenshots/IOS.png?raw=true)
 
 ## Example
 See the `example/` folder for a sample Flutter app demonstrating the usage of this plugin.
