@@ -3,6 +3,7 @@
 /// This file contains unit tests to verify the behavior of [MethodChannelCustomShare]
 /// methods [shareText] and [shareFile] using a mocked [MethodChannel].
 library;
+
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:custom_share/custom_share_method_channel.dart';
@@ -15,7 +16,10 @@ void main() {
   setUp(() {
     /// Sets up a mock method call handler for the [channel].
     TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
-        .setMockMethodCallHandler(channel, (MethodCall methodCall) async => 'success');
+        .setMockMethodCallHandler(
+          channel,
+          (MethodCall methodCall) async => 'success',
+        );
   });
 
   tearDown(() {

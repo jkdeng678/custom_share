@@ -11,6 +11,7 @@
 /// final result = await CustomSharePlatform.shareText(text: 'Hello!');
 /// ```
 library;
+
 import 'custom_share_method_channel.dart';
 
 /// An abstract class defining the interface for sharing content on different platforms.
@@ -44,7 +45,10 @@ abstract class CustomSharePlatform {
   /// override this method.
   ///
   /// Throws [UnimplementedError] if not overridden.
-  static Future<String> shareFile({required String filePath, required String mimeType}) {
+  static Future<String> shareFile({
+    required String filePath,
+    required String mimeType,
+  }) {
     throw UnimplementedError('shareFile() has not been implemented.');
   }
 }

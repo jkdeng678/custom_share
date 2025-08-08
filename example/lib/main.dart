@@ -57,10 +57,7 @@ class ShareDemoPage extends StatelessWidget {
     // Create a 100x100 red image
     final recorder = ui.PictureRecorder();
     final canvas = Canvas(recorder, Rect.fromLTWH(0, 0, 100, 100));
-    canvas.drawRect(
-      Rect.fromLTWH(0, 0, 100, 100),
-      Paint()..color = Colors.red,
-    );
+    canvas.drawRect(Rect.fromLTWH(0, 0, 100, 100), Paint()..color = Colors.red);
     final picture = recorder.endRecording();
     final img = await picture.toImage(100, 100);
     final byteData = await img.toByteData(format: ui.ImageByteFormat.png);
@@ -74,10 +71,7 @@ class ShareDemoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Custom Share Demo'),
-        centerTitle: true,
-      ),
+      appBar: AppBar(title: const Text('Custom Share Demo'), centerTitle: true),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -85,7 +79,9 @@ class ShareDemoPage extends StatelessWidget {
             TextButton(
               onPressed: () async {
                 try {
-                  final result = await CustomShare.shareText(text: 'Hello from Custom Share!');
+                  final result = await CustomShare.shareText(
+                    text: 'Hello from Custom Share!',
+                  );
                   if (context.mounted) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(content: Text('Share result: $result')),
@@ -105,7 +101,9 @@ class ShareDemoPage extends StatelessWidget {
               onPressed: () async {
                 try {
                   final filePath = await _createSampleFile();
-                  final result = await CustomShare.shareFile(filePath: filePath);
+                  final result = await CustomShare.shareFile(
+                    filePath: filePath,
+                  );
                   if (context.mounted) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(content: Text('Share result: $result')),
@@ -125,7 +123,9 @@ class ShareDemoPage extends StatelessWidget {
               onPressed: () async {
                 try {
                   final filePath = await _createSampleImage();
-                  final result = await CustomShare.shareFile(filePath: filePath);
+                  final result = await CustomShare.shareFile(
+                    filePath: filePath,
+                  );
                   if (context.mounted) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(content: Text('Share result: $result')),

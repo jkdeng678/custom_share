@@ -16,6 +16,7 @@
 ///   print(fileResult);
 /// }
 library;
+
 import 'dart:async';
 
 import 'package:flutter/services.dart';
@@ -45,7 +46,8 @@ class CustomShare {
   /// Throws a [PlatformException] if the native platform share operation fails.
   static Future<String> shareText({required String text}) async {
     try {
-      return await _channel.invokeMethod('shareText', {'text': text}) ?? 'success';
+      return await _channel.invokeMethod('shareText', {'text': text}) ??
+          'success';
     } catch (e) {
       return 'Error sharing text: $e';
     }
@@ -72,9 +74,10 @@ class CustomShare {
     try {
       final mimeType = _getMimeType(filePath);
       return await _channel.invokeMethod('shareFile', {
-        'filePath': filePath,
-        'mimeType': mimeType,
-      }) ?? 'success';
+            'filePath': filePath,
+            'mimeType': mimeType,
+          }) ??
+          'success';
     } catch (e) {
       return 'Error sharing file: $e';
     }

@@ -5,6 +5,7 @@
 /// enabling text and file sharing on Android and iOS via native platform
 /// share dialogs.
 library;
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
@@ -34,7 +35,8 @@ class MethodChannelCustomShare extends CustomSharePlatform {
   /// Throws a [PlatformException] if the native platform share operation fails.
   static Future<String> shareText({required String text}) async {
     try {
-      return await methodChannel.invokeMethod('shareText', {'text': text}) ?? 'success';
+      return await methodChannel.invokeMethod('shareText', {'text': text}) ??
+          'success';
     } catch (e) {
       return 'Error sharing text: $e';
     }
@@ -58,12 +60,16 @@ class MethodChannelCustomShare extends CustomSharePlatform {
   /// print(result); // Prints 'success' or 'Error sharing file: ...'
   /// ```
   /// Throws a [PlatformException] if the native platform share operation fails.
-  static Future<String> shareFile({required String filePath, required String mimeType}) async {
+  static Future<String> shareFile({
+    required String filePath,
+    required String mimeType,
+  }) async {
     try {
       return await methodChannel.invokeMethod('shareFile', {
-        'filePath': filePath,
-        'mimeType': mimeType,
-      }) ?? 'success';
+            'filePath': filePath,
+            'mimeType': mimeType,
+          }) ??
+          'success';
     } catch (e) {
       return 'Error sharing file: $e';
     }
