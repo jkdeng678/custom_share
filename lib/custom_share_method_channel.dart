@@ -1,13 +1,13 @@
 /// Implements the custom_share plugin using Flutter's [MethodChannel] for
 /// platform-specific communication.
 ///
-/// This class provides the concrete implementation of [CustomSharePlatform],
+/// This file provides the concrete implementation of [CustomSharePlatform],
 /// enabling text and file sharing on Android and iOS via native platform
 /// share dialogs.
 library;
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+
 import 'custom_share_platform_interface.dart';
 
 /// A platform-specific implementation of [CustomSharePlatform] using [MethodChannel].
@@ -16,7 +16,7 @@ class MethodChannelCustomShare extends CustomSharePlatform {
   ///
   /// This field is marked with [@visibleForTesting] to allow testing overrides.
   @visibleForTesting
-  final methodChannel = const MethodChannel('custom_share');
+  static const MethodChannel methodChannel = MethodChannel('custom_share');
 
   /// Shares a text message to social media or system share UI.
   ///
@@ -28,25 +28,22 @@ class MethodChannelCustomShare extends CustomSharePlatform {
   ///
   /// Example:
   /// ```dart
-  /// final result = await MethodChannelCustomShare().shareText(text: 'Hello!');
+  /// final result = await MethodChannelCustomShare.shareText(text: 'Hello!');
   /// print(result); // Prints 'success' or 'Error sharing text: ...'
   /// ```
   /// Throws a [PlatformException] if the native platform share operation fails.
-  @override
-  Future<String> shareText({required String text}) async {
+  static Future<String> shareText({required String text}) async {
     try {
-      return await methodChannel.invokeMethod('shareText', {'text': text}) ??
-          'success';
+      return await methodChannel.invokeMethod('shareText', {'text': text}) ?? 'success';
     } catch (e) {
       return 'Error sharing text: $e';
     }
   }
 
-  /// Shares one or more files to social media or system share UI.
+  /// Shares a single file to social media or system share UI.
   ///
-  /// [filePaths] is a list of file paths to share (required).
-  /// [text] is an optional accompanying message.
-  /// [mimeType] specifies the MIME type of the files (defaults to '*/*').
+  /// [filePath] is the path to the file to share (required).
+  /// [mimeType] specifies the MIME type of the file (e.g., 'image/png').
   ///
   /// Returns a [Future] that completes with a string indicating the result:
   /// 'success' if the share operation was successful, or an error message
@@ -54,28 +51,21 @@ class MethodChannelCustomShare extends CustomSharePlatform {
   ///
   /// Example:
   /// ```dart
-  /// final result = await MethodChannelCustomShare().shareFiles(
-  ///   filePaths: ['path/to/image.png'],
-  ///   text: 'My photo',
+  /// final result = await MethodChannelCustomShare.shareFile(
+  ///   filePath: 'path/to/image.png',
+  ///   mimeType: 'image/png',
   /// );
-  /// print(result); // Prints 'success' or 'Error sharing files: ...'
+  /// print(result); // Prints 'success' or 'Error sharing file: ...'
   /// ```
   /// Throws a [PlatformException] if the native platform share operation fails.
-  @override
-  Future<String> shareFiles({
-    required List<String> filePaths,
-    String? text,
-    String mimeType = '*/*',
-  }) async {
+  static Future<String> shareFile({required String filePath, required String mimeType}) async {
     try {
-      return await methodChannel.invokeMethod('shareFiles', {
-            'filePaths': filePaths,
-            'text': text,
-            'mimeType': mimeType,
-          }) ??
-          'success';
+      return await methodChannel.invokeMethod('shareFile', {
+        'filePath': filePath,
+        'mimeType': mimeType,
+      }) ?? 'success';
     } catch (e) {
-      return 'Error sharing files: $e';
+      return 'Error sharing file: $e';
     }
   }
 }

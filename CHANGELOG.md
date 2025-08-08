@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.7
+- Renamed shareFiles to shareFile, changed filePaths to filePath (single file), removed text parameter, and added automatic MIME type detection using path: ^1.9.1 and mime: ^2.0.0.
+- Made CustomShare methods static for direct calls (e.g., CustomShare.shareFile).
+
 ## 1.0.6
 - Fixed formatting issues in `lib/custom_share.dart`, `lib/custom_share_method_channel.dart`, and other files using `dart format`.
 - Resolved static analysis issues for code health.

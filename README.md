@@ -11,7 +11,7 @@ A Flutter plugin for sharing text and files via **NATIVE SHARE UI**, supporting 
 Add the following to your `pubspec.yaml`:
 ```yaml
 dependencies:
-  custom_share: ^1.0.6
+  custom_share: ^1.0.7
 ```
 
 Run:
@@ -24,15 +24,13 @@ flutter pub get
 import 'package:custom_share/custom_share.dart';
 
 // Share text
-final result = await CustomShare().shareText(text: 'Hello from Custom Share!');
+final result = await CustomShare.shareText(text: 'Hello from Custom Share!');
 print('Share result: $result');
 
 // Share a file
 final filePath = '/path/to/sample.txt';
-final fileResult = await CustomShare().shareFiles(
-  filePaths: [filePath],
-  text: 'Sharing a sample file',
-  mimeType: 'text/plain',
+final fileResult = await CustomShare.shareFile(
+  filePath: filePath,
 );
 print('File share result: $fileResult');
 ```

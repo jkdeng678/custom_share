@@ -24,30 +24,22 @@ public class CustomSharePlugin: NSObject, FlutterPlugin {
             } else {
                 result(FlutterError(code: "NO_WINDOW", message: "No main window found", details: nil))
             }
-        case "shareFiles":
-            guard let args = call.arguments as? [String: Any],
-                  let filePaths = args["filePaths"] as? [String],
-                  !filePaths.isEmpty else {
-                result(FlutterError(code: "INVALID_PATH", message: "File paths cannot be null or empty", details: nil))
+        case "shareFile":
+            guard let args = call.arguments as? [String: String],
+                  let filePath = args["filePath"] else {
+                result(FlutterError(code: "INVALID_PATH", message: "File path cannot be null", details: nil))
                 return
             }
-            let text = args["text"] as? String
-            var items: [Any] = filePaths.compactMap { path in
-                let url = URL(fileURLWithPath: path)
-                if FileManager.default.fileExists(atPath: path) {
-                    let _ = url.startAccessingSecurityScopedResource()
-                    return url
-                }
-                result(FlutterError(code: "FILE_NOT_FOUND", message: "File does not exist: \(path)", details: nil))
-                return nil
+            let fileURL = URL(fileURLWithPath: filePath)
+            if !FileManager.default.fileExists(atPath: filePath) {
+                result(FlutterError(code: "FILE_NOT_FOUND", message: "File does not exist: \(filePath)", details: nil))
+                return
             }
-            if let text = text, !text.isEmpty {
-                items.append(text)
-            }
-            let picker = NSSharingServicePicker(items: items)
+            let _ = fileURL.startAccessingSecurityScopedResource()
+            let picker = NSSharingServicePicker(items: [fileURL])
             if let window = NSApp.mainWindow {
                 picker.show(relativeTo: .zero, of: window.contentView!, preferredEdge: .minY)
-                items.compactMap { $0 as? URL }.forEach { $0.stopAccessingSecurityScopedResource() }
+                fileURL.stopAccessingSecurityScopedResource()
                 result("success")
             } else {
                 result(FlutterError(code: "NO_WINDOW", message: "No main window found", details: nil))

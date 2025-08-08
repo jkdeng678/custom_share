@@ -3,12 +3,12 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   test('shareText returns success', () async {
-    final result = await CustomShare().shareText(text: 'test');
+    final result = await CustomShare.shareText(text: 'test');
     expect(result, 'success');
   });
 
   test('shareFiles returns success', () async {
-    final result = await CustomShare().shareFiles(filePaths: ['/path/to/file']);
+    final result = await CustomShare.shareFile(filePath: '/path/to/file');
     expect(result, 'success');
   });
 }
